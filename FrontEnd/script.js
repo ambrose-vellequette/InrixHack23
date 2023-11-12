@@ -1,5 +1,7 @@
+let map;
+
 function initAutocomplete() {
-        const map = new google.maps.Map(document.getElementById("map"), {
+        map = new google.maps.Map(document.getElementById("map"), {
           center: { lat: 37.769138, lng: -122.449035 }, 
           disableDefaultUI: true,
           zoom: 13,
@@ -88,12 +90,45 @@ function sendCoordsBackend() {
       console.log("lat: " + latitude);
       console.log("lng: " + longitude);
       // send lat + lng to backend
+      //makePostRequest("path that we don't have", {latitude, longitude})
+      request("localhost link running server", {latitude, longitude})
     } else {
-      alert("figure it out buddy");
+      alert("Not a vaild Destination");
     }
   });
   console.log(address);
-  
+}
 
+function request(path, queryObj) {
+    axios.post(path, queryObj).then(
+        (response) => {
+            let result = response.data;
+            console.log(result);
+            putthestuffonthemap(result)
+        },
+        (error) => {
+            console.log(error);
+        }
+    );
+}
 
+function putthestuffonthemap(data){
+  // make coords
+  var coord1 = {/*data.lat1, data.long1*/};
+  var coord1 = {/*data.lat2, data.long2*/};
+  var coord1 = {/*data.lat3, data.long3*/};
+
+  // display geojsons
+  new google.maps.Marker({
+    position: coord1,
+    map,
+  });
+  new google.maps.Marker({
+    position: coord2,
+    map,
+  });
+  new google.maps.Marker({
+    position: coord3,
+    map,
+  });
 }
