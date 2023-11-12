@@ -3,6 +3,8 @@ from flask_cors import CORS
 import requests
 from datetime import datetime, timedelta
 from cachetools import TTLCache
+from bestpark import combinator
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -86,11 +88,13 @@ def get_street_parking():
     headers = {
     'Authorization': "Bearer " + token
     }
-
+    
     response = requests.request("GET", url, headers=headers, data=payload)
 
     print(response.json())
-    return jsonify(response.json()), 200, {'Access-Control-Allow-Origin': '*'}
+    dict = combinator(lat,long,token)
+    return json.dumps(dict, indent=4)
+    #return jsonify(response.json()), 200, {'Access-Control-Allow-Origin': '*'}
     # return json object for coord
 
 if __name__ == '__main__':
