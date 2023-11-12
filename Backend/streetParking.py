@@ -2,10 +2,11 @@ import requests
 import numpy as np
 
 class Street:
-    def __init__(self, prob, lat, long):
+    def __init__(self, prob, lat, long, ncrime):
         self.prob = prob
         self.lat = lat
         self.long = long
+        self.ncrime = ncrime
 lat = "37.74304518280319"
 long = "-122.42438793182373"
 rad = str(50)
@@ -23,7 +24,7 @@ resultsList = response.json()["result"]
 array = []
 for res in resultsList:
 
-    nstreet = Street(res["probability"], res["geojson"]["coordinates"][1][1], res["geojson"]["coordinates"][1][0])
+    nstreet = Street(res["probability"], res["geojson"]["coordinates"][1][1], res["geojson"]["coordinates"][1][0],0)
     array.append(nstreet)
     print(nstreet.prob)
 
