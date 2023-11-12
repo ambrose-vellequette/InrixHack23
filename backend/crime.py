@@ -1,5 +1,10 @@
 import requests
 
+class Crime:
+    def __init__(self, lat, long):
+        self.lat = lat
+        self.long = long
+
 url = "https://data.sfgov.org/resource/tmnf-yvry.json?category=VEHICLE THEFT"
 
 payload = {}
@@ -8,6 +13,11 @@ headers = {
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
+resultsList = response.json()
 
-print(response.text)
+array = []
+for res in resultsList:
 
+    newcrime = Crime(res["y"], res["x"])
+    array.append(newcrime)
+    print(newcrime.lat +", "+ newcrime.long)
