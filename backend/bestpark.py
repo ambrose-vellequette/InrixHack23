@@ -17,10 +17,11 @@ def combinator(lat,long,token):
     print("scores:")
 
     for shit in newparkingarray:
-        if shit.prob == 0:
-            probability = .01
-        else:
-            probability  = shit.prob
+#        if shit.prob == 0:
+#            probability = .01
+#        else:
+#            probability  = shit.prob
+        probability = float(shit.prob) if shit.prob is not None else 0.0
         shit.score = float(probability)*(.003*float(probability) -.7*shit.ncrime)
         print(shit.ncrime)
         print(shit.score)
