@@ -1,6 +1,6 @@
 import requests
 import numpy as np
-
+import classes
 class Street:
     def __init__(self, prob, lat, long, ncrime):
         self.prob = prob

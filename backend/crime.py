@@ -1,4 +1,5 @@
 import requests
+import classes
 
 class Crime:
     def __init__(self, lat, long):
