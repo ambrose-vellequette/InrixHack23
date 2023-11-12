@@ -98,7 +98,7 @@ function sendCoordsBackend() {
   });
   console.log(address);
 }
-
+// http://127.0.0.1:3000/getStreetParking?lat=value1&long=value2
 function request(path, queryObj) {
     axios.post(path, queryObj).then(
         (response) => {
