@@ -17,5 +17,6 @@ def checkProximity(parking_array, crime_array):
             radius = math.sqrt((lat_dist)**2 + (long_dist)**2)
             if radius <= 100000:
                 streets.ncrime += 1
-            
+                
+            print(streets.ncrime)
     return parking_array
