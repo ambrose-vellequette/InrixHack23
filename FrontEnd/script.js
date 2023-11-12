@@ -1,6 +1,3 @@
-
-
-
 let map;
 
 function initAutocomplete() {
@@ -115,7 +112,6 @@ function sendCoordsBackend() {
       console.error('Error:', error);
   });
 
-
     } else {
       alert("Not a vaild Destination");
     }
@@ -174,14 +170,12 @@ function putthestuffonthemap(lat1, long1, lat2, long2, lat3, long3){
     });
   });
 
-
 marker2.addListener("click", () => {
   infowindow2.open({
     anchor: marker2,
     map,
   });
 });
-
 
 marker3.addListener("click", () => {
   infowindow3.open({
