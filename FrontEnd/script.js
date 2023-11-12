@@ -1,3 +1,6 @@
+
+
+
 let map;
 
 function initAutocomplete() {
@@ -74,8 +77,6 @@ function initAutocomplete() {
       
 window.initAutocomplete = initAutocomplete;
 
-    
-
 function sendCoordsBackend() {
   var geocoder = new google.maps.Geocoder();
   var address = document.getElementById('pac-input').value;
@@ -90,29 +91,75 @@ function sendCoordsBackend() {
       console.log("lat: " + latitude);
       console.log("lng: " + longitude);
       // send lat + lng to backend
-      //makePostRequest("path that we don't have", {latitude, longitude})
-      request("http://127.0.0.1:3000", {latitude, longitude})
+     //request("http://127.0.0.1:3000", {latitude, longitude})
+
+    url = "http://127.0.0.1:3000/getStreetParking?lat=" + latitude + "&long=" + longitude;
+    fetch(url, {
+        method: 'GET',
+    }).then(response => {
+      // Check if the response status is OK (200 
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      // Parse the JSON response
+      return response.json();
+  })
+  .then(data => {
+      // Do something with the data
+      console.log(data);
+  })
+  .catch(error => {
+      // Handle errors
+      console.error('Error:', error);
+  });
+
+
     } else {
       alert("Not a vaild Destination");
     }
   });
+  /** PUT CHAT GPT CODE IN HERE
+   *   fetch('http://localhost:5000/api/resource')
+        .then(response => {
+            // Check if the response status is OK (200 
+   if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            // Parse the JSON response
+            return response.json();
+        })
+        .then(data => {
+            // Do something with the data
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error:', error);
+        });
+   * 
+   * 
+   * 
+   * 
+   * 
+   */
   console.log(address);
 }
 // http://127.0.0.1:3000/getStreetParking?lat=value1&long=value2
-function request(path, queryObj) {
-    axios.post(path, queryObj).then(
-        (response) => {
-            let result = response.data;
-            console.log(result);
-            putthestuffonthemap(result)
-        },
-        (error) => {
-            console.log(error);
-        }
-    );
-}
+// function request(path, queryObj) {
+//     axios.post(path, queryObj).then(
+//         (response) => {
+//             let result = response.data;
+//             console.log(result);
+//             putthestuffonthemap(result)
+//         },
+//         (error) => {
+//             console.log(error);
+//         }
+//     );
+// }
 
 function putthestuffonthemap(data){
+  
   // make coords
   // var coord1 = {data.lat1, data.long1};
   // var coord1 = {data.lat2, data.long2};
@@ -132,3 +179,7 @@ function putthestuffonthemap(data){
     map,
   });
 }
+
+
+
+
