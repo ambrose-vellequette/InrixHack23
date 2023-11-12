@@ -6,5 +6,7 @@ long = "-122.42438793182373"
 # call crime
 
 for obj in array:
-    if lat - array[i++][0] > -20 &&  lat - array[i++][0] < 20 # lat
-        
+    if lat - array[i][0] > -20 &&  lat - array[i++][0] < 20 # lat
+        if long - array[i][1] > -20 && long - array[]
+            Street.ncrime++
+
