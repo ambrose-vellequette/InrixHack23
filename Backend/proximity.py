@@ -72,8 +72,8 @@ def are_coordinates_within_distance(lat1, lon1, lat2, lon2, max_distance=20):
 def checkProximity(parking_array, crime_array):
     for crimes in crime_array:
         for streets in parking_array:
-             if are_coordinates_within_distance(float(streets.lat), float(streets.long), float(crimes.lat), float(crimes.long), 20):
+            if are_coordinates_within_distance(float(streets.lat), float(streets.long), float(crimes.lat), float(crimes.long), 20):
                 streets.ncrimes += 1
-                print(streets.ncrimes)
+            print(streets.ncrimes)
 
     return parking_array
