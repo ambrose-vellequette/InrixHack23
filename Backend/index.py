@@ -7,7 +7,7 @@ from bestpark import combinator
 import json
 
 app = Flask(__name__)
-CORS(app)
+CORS(app) # enable for everyone 
 
 # Using TTLCache as an equivalent for NodeCache with a TTL of 1 hour
 api_cache = TTLCache(maxsize=1000, ttl=3600)
