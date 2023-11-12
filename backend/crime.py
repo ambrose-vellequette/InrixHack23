@@ -6,7 +6,7 @@ class Crime:
         self.lat = lat
         self.long = long
 def listcrime():
-
+    print("listcrime")
     url = "https://data.sfgov.org/resource/tmnf-yvry.json?category=VEHICLE THEFT"
     payload = {}
     headers = {
@@ -23,3 +23,5 @@ def listcrime():
         crime_array.append(newcrime)
         print(newcrime.lat +", "+ newcrime.long)
     return crime_array
+if __name__ == '__main__':
+    arr = listcrime()
