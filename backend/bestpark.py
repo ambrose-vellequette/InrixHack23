@@ -18,9 +18,19 @@ def combinator(lat,long):
         shit.score = shit.prob*(.3*shit.prob -.7*shit.ncrime)
         print(shit.ncrime)
         print(shit.score)
-    
-    #max 3 go here
 
+    #max 3 go here
+    maxscores = [0.0,0.0,0.0]
+    for parray in newparkingarray:
+        if parray.score > maxscores[0]:
+            temp = parray.score + maxscores[1:]
+        elif parray.score > maxscores[1]:
+            temp = maxscores[0] + parray.score + maxscores[2]
+        elif parray.score > maxscores[2]:
+            temp = maxscores[0:2] + parray.score
+        maxscores = temp
+    print(maxscores)
+            
 
 lat = float("37.74304518280319")
 long = float("-122.42438793182373")
