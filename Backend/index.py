@@ -83,7 +83,7 @@ def get_street_parking():
     get_token()
     token = api_cache[config['appId']]['token']
 
-    response_headers = {'Access-Control-Allow-Origin': '*'}
+    # response_headers = {'Access-Control-Allow-Origin': '*'}
     lat = request.args.get('LAT')
     long = request.args.get('LONG')
 
