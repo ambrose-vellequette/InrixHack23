@@ -1,6 +1,3 @@
-
-
-
 let map;
 
 function initAutocomplete() {
@@ -107,77 +104,85 @@ function sendCoordsBackend() {
   .then(data => {
       // Do something with the data
       console.log(data);
+      putthestuffonthemap(data.lat1, data.long1, data.lat2, data.long2, data.lat3, data.long3)
+
   })
   .catch(error => {
       // Handle errors
       console.error('Error:', error);
   });
 
-
     } else {
       alert("Not a vaild Destination");
     }
   });
-  /** PUT CHAT GPT CODE IN HERE
-   *   fetch('http://localhost:5000/api/resource')
-        .then(response => {
-            // Check if the response status is OK (200 
-   if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            // Parse the JSON response
-            return response.json();
-        })
-        .then(data => {
-            // Do something with the data
-            console.log(data);
-        })
-        .catch(error => {
-            // Handle errors
-            console.error('Error:', error);
-        });
-   * 
-   * 
-   * 
-   * 
-   * 
-   */
+
   console.log(address);
 }
-// http://127.0.0.1:3000/getStreetParking?lat=value1&long=value2
-// function request(path, queryObj) {
-//     axios.post(path, queryObj).then(
-//         (response) => {
-//             let result = response.data;
-//             console.log(result);
-//             putthestuffonthemap(result)
-//         },
-//         (error) => {
-//             console.log(error);
-//         }
-//     );
-// }
 
-function putthestuffonthemap(data){
+function putthestuffonthemap(lat1, long1, lat2, long2, lat3, long3){
+
+  const contentString1 =
+    '<div id="content">' +
+    '<h1 id="firstHeading" class="firstHeading">1st Place Best Parking Spot</h1>' +
+    "</div>";
+    const contentString2 =
+    '<div id="content">' +
+    '<h1 id="firstHeading" class="firstHeading">2nd Place Best Parking Spot</h1>' +
+    "</div>";
+    const contentString3 =
+    '<div id="content">' +
+    '<h1 id="firstHeading" class="firstHeading">3rd Place Best Parking Spot</h1>' +
+    "</div>";
+  const infowindow1 = new google.maps.InfoWindow({
+    content: contentString1,
+  });
+  const infowindow2 = new google.maps.InfoWindow({
+    content: contentString2,
+  });
+  const infowindow3 = new google.maps.InfoWindow({
+    content: contentString3,
+  });
   
   // make coords
-  // var coord1 = {data.lat1, data.long1};
-  // var coord1 = {data.lat2, data.long2};
-  // var coord1 = {data.lat3, data.long3};
+  var coord1 = { lat: parseFloat(lat1), lng: parseFloat(long1) };
+  var coord2 = { lat: parseFloat(lat2), lng: parseFloat(long2) };
+  var coord3 = { lat: parseFloat(lat3), lng: parseFloat(long3) };
 
   // display geojsons
-  new google.maps.Marker({
+  marker1 = new google.maps.Marker({
     position: coord1,
     map,
   });
-  new google.maps.Marker({
+  marker2 = new google.maps.Marker({
     position: coord2,
     map,
   });
-  new google.maps.Marker({
+  marker3 = new google.maps.Marker({
     position: coord3,
     map,
   });
+
+  marker1.addListener("click", () => {
+    infowindow1.open({
+      anchor: marker1,
+      map,
+    });
+  });
+
+marker2.addListener("click", () => {
+  infowindow2.open({
+    anchor: marker2,
+    map,
+  });
+});
+
+marker3.addListener("click", () => {
+  infowindow3.open({
+    anchor: marker3,
+    map,
+  });
+});
 }
 
 

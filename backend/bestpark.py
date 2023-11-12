@@ -14,16 +14,17 @@ def combinator(lat,long,token):
 
     newparkingarray = checkProximity(parking_array,crime_array)
 
-    print("scores:")
+    #print("scores:")
 
-    for shit in newparkingarray:
-        if shit.prob == 0:
-            probability = .01
-        else:
-            probability  = shit.prob
-        shit.score = float(probability)*(.003*float(probability) -.7*shit.ncrime)
-        print(shit.ncrime)
-        print(shit.score)
+    for segs in newparkingarray:
+#        if shit.prob == 0:
+#            probability = .01
+#        else:
+#            probability  = shit.prob
+        probability = float(segs.prob) if segs.prob is not None else 0.0
+        segs.score = float(probability)*(.003*float(probability) -.7*segs.ncrime)
+        #print(segs.ncrime)
+        #print(segs.score)
 
 
     #max 3 go here
@@ -57,7 +58,7 @@ def combinator(lat,long,token):
             lowest = value1
 
     maxscores = [highest, middle, lowest]
-    print(maxscores)
+    #print(maxscores)
     temp = maxscores
     for parray in newparkingarray[3:]:
         if parray.score > maxscores[0].score:
@@ -67,7 +68,7 @@ def combinator(lat,long,token):
         elif parray.score > maxscores[2].score:
             temp = [maxscores[0],maxscores[1],parray]
         maxscores = temp
-        print(maxscores[0].score, maxscores[1].score, maxscores[2].score)
+        #print(maxscores[0].score, maxscores[1].score, maxscores[2].score)
     
     
     dictionary = {
@@ -84,5 +85,5 @@ def combinator(lat,long,token):
 if __name__ == '__main__':
     lat = float("37.74304518280319")
     long = float("-122.42438793182373")
-    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InN4NmYwNjBtdjAiLCJ0b2tlbiI6eyJpdiI6Ijk2NmI0YWM1ZjE2MThiNjJlMzczYjFjMmRhMDMyYzYxIiwiY29udGVudCI6IjJmYzI1ZmI2MmU5Njk5NGFmNjYxMGJlM2RjMmRhZjg1NTQ2MDA3MmY0MTQzMzMxMjYxNDExYzk3MThlOWMxNDg1ZWJhYjliOGJiMDZjMzFlYzlhMTY5OGMyZjhiZmQxNGI0Y2VkOTk4OWM4MmIxZjE1ZmQ0NmVkZmM2YTNlNzVlZGQzZDIyMmI4Yjk2ZjkyNzQ3MDliM2ZkYmRjN2JiZjIxZDQ1ZjRmY2FhM2VjMTBkNmUzZmU3YTliOGVhYTViNmY5N2Y4OGJkMzU1OTEwODU3ZDM0OTI5YWE3MWU1ZDQ5ZGY5ODAyMTFjZjcwN2E3NTIwNjExYjA5MTJkNGRmZGI0MWQxNjQ1MWFjMTUyOGY4MmQzZWE4MzMwZGM2MzAwY2I0MDkwZGQ3MDA2NzA3Yzc2Y2RlMzVjNGVkOGE0YjU1NzY3MDI0M2ZmYjM5NzI5M2M0ODMxYjI3ZWYzMzVhNGQxZDRiZjlhMzhkYzkxZjQzOTM1MGYyZGM3Yjg2OWZlN2VkOTE3NWZjYWUxNzJiOGIyMTRlZmNhM2RhMzdiYTQzYWE4Y2VlY2UzMDlkMjYxMDI0NGViNWZlNTU5ZDQ1ZGYyZDBkNWU1NmEwZWMxY2NkZjMwN2I0NTMzNWU3OTI4NzdlOGI5YTEwNjg4YmMyZDdiNTk1NzlmZWVhMzQyZDlkY2U4YTE3OWUzOTI5YTg2NzViOTBlZjk4YzYwYzY2NjFhYWFkNTYxZGFkNGMzNTJlMGM4OTgxYWUyOTJjYzI2ZTJhOTAyNzg2NmRkMzFjZmViNTVhZmUwMTczZWVmYjg2N2ViM2MzZWYxZWU0NmNmMTRhZDViYzQyMGIzMGFlYjgyMGJiOWU3ZTg5Y2ZiZmQ4YTE2MDEzIn0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiI5NjZiNGFjNWYxNjE4YjYyZTM3M2IxYzJkYTAzMmM2MSIsImNvbnRlbnQiOiIzOGVhMjdiNjJiOTk5NTFhZWE2NjI4ZGZjNTMxZGZmNzRiNzg3ZjNhNGUwNzE2NTM2ZTVhMWVmNjA3ZTZlOTY1Nzk5N2JjZDVhNTE3ZmIwMjhiZjY1NmIyIn0sImp0aSI6ImNhZTM4NmU5LWYzMjktNDQ4My1iYzg1LWM2ZDIzNjE4MTQ4ZCIsImlhdCI6MTY5OTc4NDIyNywiZXhwIjoxNjk5Nzg3ODI3fQ.vnLeei68TxTz3AOg6UX041Q_vVZ4-vhYMyDuQ8y4hfA"
+    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InN4NmYwNjBtdjAiLCJ0b2tlbiI6eyJpdiI6IjA1ZDgxNDg5MzVlN2FkZmEzMjFmZDlkODJmNjJhZmNlIiwiY29udGVudCI6ImU3ZjlmZjc3ZWRhZTRlYjkxMjAyMjhmZTVjNDIzYTAzMmRiNjA5ZmU3OWExOTI1YjRjYzgxYjFkMzQzMTNlM2MzZWJkZGQ2NmQ1MGFkYTBhYmFmOGE0YTY3MTNjNjViNzYxMTIyNjI2NGUxMzA4NzNhODY5ZGE2N2UyNDA3NTU2OTNlMzNlYWU4YjU1YjcxMGFkMDEyMGZkYjVkZWY3ZjYzYmU1MWJkMTA5ZWY3YmQyNzk2YzQxMTljZmMxZjI4ZWU2ZWE1NzE1Njc5ZDgyYzdhMDYwMjlmMDJkMjdmZGE4YTI3NzE2MmY2NzdiYzk0OTAxNTU2ZTAyM2IzYmEzNDU1ZjZjOThiODAzNjE1ODc4NjI3MWY2YmQ3MWFhYzQyNzNkODViYWZmMDE4MDBkOGRiMmVlOTU5MzZkNzViZTQyMGU2MmQyNGE3NzNiMGIxM2U5MjU1Y2I0ZWI4YzI0OWJmZTQzNmZkZmMyNWUyNDFjNjAwYWYzM2YxMmYxY2U1MTM3ODJhNmJmYzkzNTNhZGRhOWFmOWIxZGE4ZDQxYzIzZGM0ZTZlYzRhODQ5Mzk5NWZmMjQ5Y2JiMTdjN2IzOWRlMzk1ZWM0MTNiZDM4ZWRlZDkwMmYxMzAwNGQyNmVkOGU1NjM2YjQwMTIzMDdiN2MwMGIwMWJiZjg4OTI4MTM0YWFiMDk2OTQyZjE1MDBhNDRkYWM4ZWEyN2RlOWQ0ZGIzZWRlMTc5NTVlMDA2YTdiMTI3MjYyNmJkZTg5ZGEzZmMwMjUzMTZmNGMzMWQ5MGQ3NjJlZmNhNjhmOWMyZjAzMDRkYjQzNzE0OTExNTdlZDVjNDg2YWM1ZWVjMmRkNzgwNTRjMTVkNmJhOWRhYTU3ZGJhNjYwIn0sInNlY3VyaXR5VG9rZW4iOnsiaXYiOiIwNWQ4MTQ4OTM1ZTdhZGZhMzIxZmQ5ZDgyZjYyYWZjZSIsImNvbnRlbnQiOiJiMGQ4ZjM3M2UxYWE2OGUyNmYzYTBhYzM0MTUwNDM1ZDJiYjczOWM1NjE4N2E3MTc1YWRjMDM0ZjI0Mzk3ZDI3MmU4N2NmMWFiYTFhZTIzOTgyZDBiOTk4In0sImp0aSI6ImQ1MDMyZDRkLTZjZTAtNDE5MS1iNTZkLWZmNWI5NTU1NDI3YiIsImlhdCI6MTY5OTgwMzkyNywiZXhwIjoxNjk5ODA3NTI3fQ.8hdSylBW8wi2Qfi3b3nkWcbvP6-pGiS4LVY83fE7op0"
     a = combinator(lat,long,token)

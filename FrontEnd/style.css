@@ -101,3 +101,8 @@ button[type="searchParking"] {
   width: 200px;
   opacity: 1;
 }
+button[type="searchParking"]:hover {
+  background-color: #4285f4;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}

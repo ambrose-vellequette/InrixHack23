@@ -21,9 +21,9 @@ def listcrime():
 
         newcrime = Crime(res["y"], res["x"])
         crime_array.append(newcrime)
-        print(newcrime.lat +", "+ newcrime.long)
+        #print(newcrime.lat +", "+ newcrime.long)
         crimes += 1
-    print(crimes)
+    #print(crimes)
     return crime_array
 
 if __name__ == '__main__':

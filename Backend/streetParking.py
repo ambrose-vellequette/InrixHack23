@@ -29,7 +29,7 @@ def findstreetpark(lat, long,token):
 
       nstreet = Street(res["probability"], res["geojson"]["coordinates"][1][1], res["geojson"]["coordinates"][1][0],0,0)
       parking_array.append(nstreet)
-      print(str(nstreet.lat) + ", " + str(nstreet.long) +", "+ str(nstreet.ncrime))
+      #print(str(nstreet.lat) + ", " + str(nstreet.long) +", "+ str(nstreet.ncrime))
 
   return parking_array
 
