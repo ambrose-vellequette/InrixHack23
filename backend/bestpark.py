@@ -21,7 +21,7 @@ def combinator(lat,long,token):
             probability = .01
         else:
             probability  = shit.prob
-        shit.score = probability*(.003*probability -.7*shit.ncrime)
+        shit.score = float(probability)*(.003*float(probability) -.7*shit.ncrime)
         print(shit.ncrime)
         print(shit.score)
 
