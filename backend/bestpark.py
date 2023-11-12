@@ -12,9 +12,9 @@ def combinator(lat,long):
 
     crime_array= listcrime()
 
-    checkProximity(parking_array,crime_array)
+    newparkingarray = checkProximity(parking_array,crime_array)
     print("scores:")
-    for shit in parking_array:
+    for shit in newparkingarray:
         shit.score = shit.prob*(.3*shit.prob -.7*shit.ncrime)
         print(shit.ncrime)
         print(shit.score)

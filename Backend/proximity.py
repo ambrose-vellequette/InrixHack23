@@ -10,4 +10,6 @@ def checkProximity(parking_array, crime_array):
             # radius within ___ meters
             radius = math.sqrt(((float(crimes.lat) - float(streets.lat)) * CONV_DEG_TO_METER)**2 + ((float(crimes.long) - float(streets.long))* CONV_DEG_TO_METER)**2)
             if radius < 20:
-                parking_array.ncrime += 1
+                streets.ncrime += 1
+        print(streets.ncrime)
+    return parking_array
