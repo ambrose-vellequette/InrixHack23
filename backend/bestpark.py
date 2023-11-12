@@ -23,7 +23,36 @@ def combinator(lat,long,token):
 
 
     #max 3 go here
-    maxscores = [newparkingarray[0],newparkingarray[1],newparkingarray[2]]
+    value1 = newparkingarray[0]
+    value2 = newparkingarray[1]
+    value3 = newparkingarray[2]
+    if value1.score >= value2.score and value1.score >= value3.score:
+        highest = value1
+        if value2.score >= value3.score:
+            middle = value2
+            lowest = value3
+        else:
+            middle = value3
+            lowest = value2
+    elif value2.score >= value1.score and value2.score >= value3.score:
+        highest = value2
+        if value1.score >= value3.score:
+            middle = value1
+            lowest = value3
+        else:
+            middle = value3
+            lowest = value1
+    else:
+        highest = value3
+        if value1.score >= value2.score:
+            middle = value1
+            lowest = value2
+
+        else:
+            middle = value2
+            lowest = value1
+
+    maxscores = [highest, middle, lowest]
     print(maxscores)
     temp = maxscores
     for parray in newparkingarray[3:]:
