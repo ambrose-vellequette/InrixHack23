@@ -91,14 +91,14 @@ function sendCoordsBackend() {
       console.log("lng: " + longitude);
       // send lat + lng to backend
       //makePostRequest("path that we don't have", {latitude, longitude})
-      request("localhost link running server", {latitude, longitude})
+      request("http://127.0.0.1:3000", {latitude, longitude})
     } else {
       alert("Not a vaild Destination");
     }
   });
   console.log(address);
 }
-
+// http://127.0.0.1:3000/getStreetParking?lat=value1&long=value2
 function request(path, queryObj) {
     axios.post(path, queryObj).then(
         (response) => {
@@ -114,9 +114,9 @@ function request(path, queryObj) {
 
 function putthestuffonthemap(data){
   // make coords
-  var coord1 = {/*data.lat1, data.long1*/};
-  var coord1 = {/*data.lat2, data.long2*/};
-  var coord1 = {/*data.lat3, data.long3*/};
+  // var coord1 = {data.lat1, data.long1};
+  // var coord1 = {data.lat2, data.long2};
+  // var coord1 = {data.lat3, data.long3};
 
   // display geojsons
   new google.maps.Marker({
