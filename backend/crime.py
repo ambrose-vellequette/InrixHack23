@@ -15,13 +15,16 @@ def listcrime():
 
     response = requests.request("GET", url, headers=headers, data=payload)
     resultsList = response.json()
-
+    crimes = 0
     crime_array = []
     for res in resultsList:
 
         newcrime = Crime(res["y"], res["x"])
         crime_array.append(newcrime)
         print(newcrime.lat +", "+ newcrime.long)
+        crimes += 1
+    print(crimes)
     return crime_array
+
 if __name__ == '__main__':
     arr = listcrime()

@@ -12,7 +12,7 @@ class Street:
 
 def findstreetpark(lat, long,token):
   print("streetparking")
-  rad = str(150)
+  rad = str(400)
   #all should be strings
   url = "https://api.iq.inrix.com/blocks/v3?point="+str(lat)+"%7C"+str(long)+"&radius="+rad
 
