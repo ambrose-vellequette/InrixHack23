@@ -91,6 +91,7 @@ def get_street_parking():
 
     print(response.json())
     return jsonify(response.json()), 200, {'Access-Control-Allow-Origin': '*'}
+    # return json object for coord
 
 if __name__ == '__main__':
     port = 3000
