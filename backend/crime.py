@@ -4,7 +4,7 @@ class Crime:
     def __init__(self, lat, long):
         self.lat = lat
         self.long = long
-def crimelist():
+def listcrime():
 
     url = "https://data.sfgov.org/resource/tmnf-yvry.json?category=VEHICLE THEFT"
     payload = {}
