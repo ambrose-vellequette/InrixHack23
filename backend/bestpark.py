@@ -3,19 +3,21 @@ from streetParking import findstreetpark
 from crime import listcrime
 from proximity import checkProximity
 
-def combinator(lat,long):
+def combinator(lat,long,token):
 
 
     
 
-    parking_array = findstreetpark(lat, long)
+    parking_array = findstreetpark(lat, long,token)
 
     crime_array= listcrime()
 
     newparkingarray = checkProximity(parking_array,crime_array)
+
     print("scores:")
+
     for shit in newparkingarray:
-        shit.score = shit.prob*(.3*shit.prob -.7*shit.ncrime)
+        shit.score = shit.prob*(.003*shit.prob -.7*shit.ncrime)
         print(shit.ncrime)
         print(shit.score)
 
@@ -30,7 +32,16 @@ def combinator(lat,long):
             temp = [maxscores[0],maxscores[1],parray]
         maxscores = temp
         print(maxscores[0].score, maxscores[1].score, maxscores[2].score)
-    return maxscores
+    dictionary = {
+        "lat1": maxscores[0].lat,
+        "long1": maxscores[0].long,
+        "lat2": maxscores[1].lat,
+        "long2": maxscores[1].long,
+        "lat3": maxscores[2].lat,
+        "long3": maxscores[2].long,
+    }
+    print(dictionary)
+    return dictionary
             
 if __name__ == '__main__':
     lat = float("37.74304518280319")
