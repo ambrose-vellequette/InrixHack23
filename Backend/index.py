@@ -82,16 +82,17 @@ def get_street_parking():
     get_token()
     token = api_cache[config['appId']]['token']
 
-    url = "https://api.iq.inrix.com/blocks/v3?point=37.74304518280319%7C-122.42438793182373&radius=50"
-
-    payload = {}
-    headers = {
-    'Authorization': "Bearer " + token
-    }
+#    url = "https://api.iq.inrix.com/blocks/v3?point=37.74304518280319%7C-122.42438793182373&radius=50"
+#
+#    payload = {}
+#    headers = {
+#    'Authorization': "Bearer " + token
+#    }
     
-    response = requests.request("GET", url, headers=headers, data=payload)
+    #response = requests.request("GET", url, headers=headers, data=payload)
 
-    print(response.json())
+    #print(response.json())
+    
     dict = combinator(lat,long,token)
     return json.dumps(dict, indent=4)
     #return jsonify(response.json()), 200, {'Access-Control-Allow-Origin': '*'}
