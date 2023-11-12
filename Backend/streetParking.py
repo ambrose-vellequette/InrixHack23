@@ -6,9 +6,11 @@ class Street:
         self.prob = prob
         self.lat = lat
         self.long = long
-
-
-url = "https://api.iq.inrix.com/blocks/v3?point=37.74304518280319%7C-122.42438793182373&radius=50"
+lat = "37.74304518280319"
+long = "-122.42438793182373"
+rad = str(50)
+#all should be strings
+url = "https://api.iq.inrix.com/blocks/v3?point="+lat+"%7C"+long+"&radius="+rad
 
 payload = {}
 headers = {
